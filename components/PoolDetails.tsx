@@ -4,18 +4,17 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, Plus, Minus } from 'lucide-react'
 import Link from 'next/link'
 
-// Mock pool data for a single pool
-const mockPool = {
-  id: 1,
-  tokenA: { symbol: 'COTI', name: 'COTI' },
-  tokenB: { symbol: 'ETH', name: 'Ethereum' },
-  tvl: '$1,234,567',
-  volume24h: '$456,789',
-  fees24h: '$1,234',
-  apr: '12.5%'
+interface Pool {
+  id: number;
+  tokenA: { symbol: string; name: string };
+  tokenB: { symbol: string; name: string };
+  tvl: string;
+  volume24h: string;
+  fees24h: string;
+  apr: string;
 }
 
-export default function PoolDetails() {
+export default function PoolDetails({ pool }: { pool: Pool }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -35,7 +34,7 @@ export default function PoolDetails() {
             <div className="w-10 h-10 bg-gray-600 rounded-full border-2 border-slate-800"></div>
             <div className="w-10 h-10 bg-gray-500 rounded-full border-2 border-slate-800"></div>
           </div>
-          <h2 className="text-2xl font-bold text-white">{mockPool.tokenA.symbol} / {mockPool.tokenB.symbol}</h2>
+          <h2 className="text-2xl font-bold text-white">{pool.tokenA.symbol} / {pool.tokenB.symbol}</h2>
         </div>
       </div>
 
@@ -43,19 +42,19 @@ export default function PoolDetails() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
         <div className="bg-white/5 p-4 rounded-lg">
           <p className="text-sm text-gray-400">TVL</p>
-          <p className="text-xl font-bold font-mono">{mockPool.tvl}</p>
+          <p className="text-xl font-bold font-mono">{pool.tvl}</p>
         </div>
         <div className="bg-white/5 p-4 rounded-lg">
           <p className="text-sm text-gray-400">Volume (24H)</p>
-          <p className="text-xl font-bold font-mono">{mockPool.volume24h}</p>
+          <p className="text-xl font-bold font-mono">{pool.volume24h}</p>
         </div>
         <div className="bg-white/5 p-4 rounded-lg">
           <p className="text-sm text-gray-400">Fees (24H)</p>
-          <p className="text-xl font-bold font-mono">{mockPool.fees24h}</p>
+          <p className="text-xl font-bold font-mono">{pool.fees24h}</p>
         </div>
         <div className="bg-white/5 p-4 rounded-lg">
           <p className="text-sm text-gray-400">APR</p>
-          <p className="text-xl font-bold font-mono text-coti-blue">{mockPool.apr}</p>
+          <p className="text-xl font-bold font-mono text-coti-blue">{pool.apr}</p>
         </div>
       </div>
 
