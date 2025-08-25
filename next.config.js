@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const repo = 'ui-coti-defi'
+const repo = 'coti-swap'
 const assetPrefix = `/${repo}/`
 const basePath = `/${repo}`
 
